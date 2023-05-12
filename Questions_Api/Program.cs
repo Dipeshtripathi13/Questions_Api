@@ -6,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+//registering datacontext class as a service in the dependency injection container using the Adddbcontext method provide by Iservicecollertion interface
+//AddDbcontext method takes the type parameter represednting the Dbcontext subclass to register datacontext and configuration delegate
+//this code configure datacontext to use micorsoft sql server as the database provider and specify the connection string/
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
